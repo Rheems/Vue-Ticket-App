@@ -1,37 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LandingPage from "../views/LandingPage.vue";
-import Login from "../views/Login.vue";
-import Signup from "../views/Signup.vue";
-import Dashboard from "../views/Dashboard.vue"; // We'll create this next
-import Tickets from "../views/Tickets.vue"; // We'll create this next
 
 const routes = [
   {
     path: "/",
-    name: "landing",
-    component: LandingPage,
+    name: "Landing",
+    component: () => import("../views/LandingPage.vue"),
   },
   {
     path: "/login",
-    name: "login",
-    component: Login,
+    name: "Login",
+    component: () => import("../views/LoginPage.vue"),
   },
   {
     path: "/signup",
-    name: "signup",
-    component: Signup,
+    name: "Signup",
+    component: () => import("../views/SignupPage.vue"),
   },
   {
     path: "/dashboard",
-    name: "dashboard",
-    component: Dashboard,
-    meta: { requiresAuth: true },
+    name: "Dashboard",
+    component: () => import("../views/Dashboard.vue"),
   },
+
   {
     path: "/tickets",
-    name: "tickets",
-    component: Tickets,
-    meta: { requiresAuth: true },
+    name: "Tickets",
+    component: () => import("../views/Dashboard.vue"),
   },
 ];
 
@@ -40,16 +34,4 @@ const router = createRouter({
   routes,
 });
 
-// Add navigation guard for protected routes
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("ticketapp_session");
-
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    next("/login");
-  } else {
-    next();
-  }
-});
-
 export default router;
-s;

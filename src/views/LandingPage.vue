@@ -1,94 +1,110 @@
-s<template>
+<template>
   <div class="landing-page">
-    <header class="hero">
+    <!-- Hero Section with Wave -->
+    <section class="hero">
       <div class="container">
-        <h1>TicketMaster</h1>
-        <p>Simple ticket management for teams</p>
-        <div class="cta-buttons">
-          <!-- Using our UI Button component -->
-          <UIButton variant="primary" size="large" @click="goToLogin">
-            Login
-          </UIButton>
-          <UIButton variant="secondary" size="large" @click="goToSignup">
-            Get Started
-          </UIButton>
+        <div class="hero-content">
+          <h1>TicketMaster Pro</h1>
+          <p>Your ultimate solution for efficient ticket management</p>
+          <div class="cta-buttons">
+            <router-link to="/login" class="btn btn-primary">Login</router-link>
+            <router-link to="/signup" class="btn btn-secondary"
+              >Get Started</router-link
+            >
+          </div>
         </div>
+        <!-- Decorative Circle -->
+        <div class="circle circle-1"></div>
       </div>
-      <!-- Wavy background -->
-      <div class="wave"></div>
-      <!-- Decorative circle -->
-      <div class="circle circle-1"></div>
-    </header>
+      <!-- Wave Background -->
+      <div class="wave">
+        <svg
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,80 Q360,120 720,80 T1440,80 L1440,120 L0,120 Z"
+            fill="#f8f9fa"
+          />
+        </svg>
+      </div>
+    </section>
 
-    <main class="features">
+    <!-- Features Section -->
+    <section class="features">
       <div class="container">
-        <div class="feature-box">
-          <h3>Easy Ticket Management</h3>
-          <p>Create and manage tickets effortlessly</p>
+        <h2>Why Choose TicketMaster Pro?</h2>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon">🚀</div>
+            <h3>Easy Management</h3>
+            <p>Create and manage tickets with ease</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">📊</div>
+            <h3>Live Updates</h3>
+            <p>Real-time status tracking</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon">👥</div>
+            <h3>Team Collaboration</h3>
+            <p>Work together seamlessly</p>
+          </div>
         </div>
-        <div class="feature-box">
-          <h3>Real-time Updates</h3>
-          <p>Stay updated with real-time status changes</p>
-        </div>
+        <!-- Another decorative circle -->
+        <div class="circle circle-2"></div>
       </div>
-      <div class="circle circle-2"></div>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 TicketMaster. All rights reserved.</p>
-      </div>
-    </footer>
+    </section>
   </div>
 </template>
 
-<script setup>
-import { useRouter } from "vue-router";
-import UIButton from "@/components/UI/Button.vue"; // Make sure this path is correct
-
-const router = useRouter();
-
-const goToLogin = () => {
-  router.push("/login");
-};
-
-const goToSignup = () => {
-  router.push("/signup");
+<script>
+export default {
+  name: "LandingPage",
 };
 </script>
 
 <style scoped>
 .landing-page {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 20px;
 }
 
 /* Hero Section */
 .hero {
-  position: relative;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 100px 0;
-  text-align: center;
   color: white;
+  padding: 100px 0 150px;
+  position: relative;
   overflow: hidden;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .hero p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
   opacity: 0.9;
+  line-height: 1.6;
 }
 
 .cta-buttons {
@@ -98,67 +114,132 @@ const goToSignup = () => {
   flex-wrap: wrap;
 }
 
-/* Wavy Background */
+.btn {
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  min-width: 140px;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+  background: white;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Wave Background */
 .wave {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>')
-    no-repeat bottom;
-  background-size: cover;
 }
 
 /* Decorative Circles */
-.circle-1 {
+.circle {
   position: absolute;
-  width: 200px;
-  height: 200px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  top: 50px;
-  right: 100px;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: -100px;
 }
 
 .circle-2 {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: rgba(102, 126, 234, 0.1);
-  bottom: 100px;
-  left: 50px;
+  width: 200px;
+  height: 200px;
+  bottom: 50px;
+  left: -50px;
 }
 
 /* Features Section */
 .features {
-  position: relative;
   padding: 80px 0;
-  background: white;
+  background: #f8f9fa;
+  position: relative;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .feature-box {
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 1rem;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
-/* Footer */
-.footer {
-  background: #f7fafc;
-  padding: 2rem 0;
-  text-align: center;
-  margin-top: auto;
+.feature-box:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.feature-box p {
+  color: #666;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero {
+    padding: 60px 0 120px;
+  }
+
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
   }
 
   .cta-buttons {
@@ -166,11 +247,17 @@ const goToSignup = () => {
     align-items: center;
   }
 
+  .btn {
+    width: 200px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
   .circle-1 {
-    width: 100px;
-    height: 100px;
-    right: 20px;
-    top: 20px;
+    width: 200px;
+    height: 200px;
   }
 }
 </style>
